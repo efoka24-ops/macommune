@@ -1,0 +1,60 @@
+{
+    "name": "Testimonial",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Nom de la personne"
+      },
+      "role": {
+        "type": "string",
+        "description": "Fonction ou profession"
+      },
+      "canton": {
+        "type": "string",
+        "enum": [
+          "figuil",
+          "lam",
+          "biou",
+          "bidzar_1",
+          "bidzar_2"
+        ],
+        "description": "Canton d'origine"
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "jeune",
+          "femme",
+          "agriculteur",
+          "eleveur",
+          "commercant",
+          "leader",
+          "autre"
+        ],
+        "description": "Cat\u00e9gorie de personne"
+      },
+      "message": {
+        "type": "string",
+        "description": "T\u00e9moignage complet"
+      },
+      "photo_url": {
+        "type": "string",
+        "description": "Photo de la personne"
+      },
+      "video_url": {
+        "type": "string",
+        "description": "Vid\u00e9o t\u00e9moignage (optionnel)"
+      },
+      "featured": {
+        "type": "boolean",
+        "default": false,
+        "description": "T\u00e9moignage mis en avant"
+      }
+    },
+    "required": [
+      "name",
+      "message",
+      "canton"
+    ]
+  }

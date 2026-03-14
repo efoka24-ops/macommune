@@ -1,0 +1,54 @@
+{
+    "name": "NewsArticle",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Titre de l'actualit\u00e9"
+      },
+      "content": {
+        "type": "string",
+        "description": "Contenu complet de l'article"
+      },
+      "excerpt": {
+        "type": "string",
+        "description": "R\u00e9sum\u00e9 court pour aper\u00e7u"
+      },
+      "image_url": {
+        "type": "string",
+        "description": "URL de l'image principale"
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "terrain",
+          "reunion",
+          "projet",
+          "temoignage",
+          "communique"
+        ],
+        "description": "Cat\u00e9gorie de l'actualit\u00e9"
+      },
+      "canton": {
+        "type": "string",
+        "enum": [
+          "figuil",
+          "lam",
+          "biou",
+          "bidzar_1",
+          "bidzar_2",
+          "tous"
+        ],
+        "description": "Canton concern\u00e9"
+      },
+      "published": {
+        "type": "boolean",
+        "default": true,
+        "description": "Article publi\u00e9 ou brouillon"
+      }
+    },
+    "required": [
+      "title",
+      "content"
+    ]
+  }
