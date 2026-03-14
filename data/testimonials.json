@@ -1,0 +1,56 @@
+[
+  {
+    "id": "test001",
+    "name": "Amadou Bella",
+    "role": "Chef de quartier, Figuil Centre",
+    "content": "Emmanuel Foka est un homme intègre qui a toujours été présent pour notre communauté. J'ai confiance en sa vision pour Figuil.",
+    "photo_url": "",
+    "featured": true,
+    "created_date": "2026-01-10T10:00:00Z"
+  },
+  {
+    "id": "test002",
+    "name": "Fatimata Waziri",
+    "role": "Présidente des femmes, Lam",
+    "content": "Il comprend nos besoins en tant que femmes et mères. Son programme pour l'éducation et la santé nous donne espoir pour l'avenir de nos enfants.",
+    "photo_url": "",
+    "featured": true,
+    "created_date": "2026-01-15T11:00:00Z"
+  },
+  {
+    "id": "test003",
+    "name": "Ibrahim Maroua",
+    "role": "Agriculteur, Bidzar",
+    "content": "Enfin un candidat qui parle de nos problèmes d'irrigation et d'accès au marché. Son projet pour l'agriculture locale est exactement ce dont nous avons besoin.",
+    "photo_url": "",
+    "featured": false,
+    "created_date": "2026-01-20T09:00:00Z"
+  },
+  {
+    "id": "test004",
+    "name": "Dr. Ousmane Hama",
+    "role": "Médecin, Figuil",
+    "content": "Le projet de clinique communautaire proposé par Emmanuel Foka est une nécessité absolue pour notre arrondissement. Il a mon soutien total.",
+    "photo_url": "",
+    "featured": true,
+    "created_date": "2026-02-01T14:00:00Z"
+  },
+  {
+    "id": "test005",
+    "name": "Alhadji Modu",
+    "role": "Commerçant, Marché de Figuil",
+    "content": "Son plan pour améliorer les routes et les infrastructures commerciales va transformer notre économie locale. Nous travaillerons ensemble pour Figuil.",
+    "photo_url": "",
+    "featured": false,
+    "created_date": "2026-02-10T16:00:00Z"
+  },
+  {
+    "id": "test006",
+    "name": "Maimouna Djibril",
+    "role": "Enseignante, Lycée de Figuil",
+    "content": "J'ai vu Emmanuel travailler sans relâche pour notre école. Il a apporté des fournitures, organisé des activités parascolaires. C'est le leader qu'il nous faut.",
+    "photo_url": "",
+    "featured": true,
+    "created_date": "2026-02-20T12:00:00Z"
+  }
+]

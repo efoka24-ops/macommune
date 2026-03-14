@@ -1,0 +1,68 @@
+[
+  {
+    "id": "news001",
+    "title": "Grande mobilisation à Figuil : 500 personnes au meeting",
+    "content": "Ce samedi, plus de 500 habitants de Figuil se sont rassemblés pour écouter Emmanuel Foka présenter sa vision pour la commune. L'événement a été marqué par un enthousiasme remarquable et une participation massive des jeunes et des femmes. Les thèmes abordés incluaient l'accès à l'eau potable, la construction de routes et le soutien à l'agriculture locale.",
+    "excerpt": "Plus de 500 personnes réunies pour un meeting historique à Figuil",
+    "image_url": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
+    "category": "terrain",
+    "canton": "figuil",
+    "published": true,
+    "created_date": "2026-03-10T10:00:00Z"
+  },
+  {
+    "id": "news002",
+    "title": "Projet d'adduction d'eau pour le canton de Lam",
+    "content": "Le projet phare d'adduction d'eau pour le canton de Lam a été officiellement présenté. Ce projet prévoit la construction de 15 forages et l'installation de pompes solaires pour desservir les villages les plus reculés. Le coût estimé est de 200 millions de FCFA, financé par des partenaires internationaux.",
+    "excerpt": "15 forages et des pompes solaires pour le canton de Lam",
+    "image_url": "https://images.unsplash.com/photo-1534330207526-8e81f10ec6fc?w=800",
+    "category": "projet",
+    "canton": "lam",
+    "published": true,
+    "created_date": "2026-03-08T14:30:00Z"
+  },
+  {
+    "id": "news003",
+    "title": "Réunion stratégique avec les chefs traditionnels de Bidzar",
+    "content": "Une rencontre importante s'est tenue avec les chefs traditionnels de Bidzar I et Bidzar II. Les discussions ont porté sur les priorités de développement de ces cantons, notamment la réhabilitation des pistes rurales et la construction d'un centre de santé intégré.",
+    "excerpt": "Concertation avec les autorités traditionnelles de Bidzar",
+    "image_url": "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=800",
+    "category": "reunion",
+    "canton": "bidzar_1",
+    "published": true,
+    "created_date": "2026-03-05T09:00:00Z"
+  },
+  {
+    "id": "news004",
+    "title": "Les jeunes de Biou s'engagent pour le changement",
+    "content": "Un collectif de jeunes du canton de Biou a organisé une journée citoyenne de nettoyage et de reboisement. Cette initiative, soutenue par notre mouvement, a mobilisé plus de 200 jeunes volontaires. C'est la preuve que la jeunesse de Figuil est prête à construire un avenir meilleur.",
+    "excerpt": "200 jeunes mobilisés pour une journée citoyenne à Biou",
+    "image_url": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800",
+    "category": "terrain",
+    "canton": "biou",
+    "published": true,
+    "created_date": "2026-03-01T11:00:00Z"
+  },
+  {
+    "id": "news005",
+    "title": "Communiqué : Calendrier des activités de mars 2026",
+    "content": "Chers concitoyens, voici le calendrier de nos activités pour le mois de mars 2026. Nous prévoyons des visites dans tous les 5 cantons, des réunions publiques et des actions de proximité. Restez connectés pour ne rien manquer !",
+    "excerpt": "Programme complet des activités du mois de mars",
+    "image_url": "",
+    "category": "communique",
+    "canton": "tous",
+    "published": true,
+    "created_date": "2026-02-28T08:00:00Z"
+  },
+  {
+    "id": "news006",
+    "title": "Brouillon : Bilan du premier trimestre (à finaliser)",
+    "content": "Article en cours de rédaction sur le bilan des trois premiers mois de campagne...",
+    "excerpt": "",
+    "image_url": "",
+    "category": "communique",
+    "canton": "tous",
+    "published": false,
+    "created_date": "2026-03-12T16:00:00Z"
+  }
+]
