@@ -40,5 +40,13 @@ export const base44 = {
     NewsArticle: createEntityApi('NewsArticle'),
     Supporter: createEntityApi('Supporter'),
     Testimonial: createEntityApi('Testimonial'),
+  },
+  pages: {
+    async get(pageKey) {
+      return apiCall('GET', `/api/pages/${pageKey}`);
+    },
+    async update(pageKey, data) {
+      return apiCall('PUT', `/api/pages/${pageKey}`, data);
+    }
   }
 };

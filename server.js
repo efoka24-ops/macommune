@@ -18,6 +18,8 @@ const dataFiles = {
   Testimonial: path.join(__dirname, 'data', 'testimonials.json'),
 };
 
+const pagesFile = path.join(__dirname, 'data', 'pages.json');
+
 function readData(entity) {
   try {
     return JSON.parse(readFileSync(dataFiles[entity], 'utf-8'));
@@ -30,9 +32,39 @@ function writeData(entity, data) {
   writeFileSync(dataFiles[entity], JSON.stringify(data, null, 2), 'utf-8');
 }
 
+function readPages() {
+  try {
+    return JSON.parse(readFileSync(pagesFile, 'utf-8'));
+  } catch {
+    return {};
+  }
+}
+
+function writePages(data) {
+  writeFileSync(pagesFile, JSON.stringify(data, null, 2), 'utf-8');
+}
+
 function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 }
+
+// Pages API routes (GET and PUT specific page sections)
+app.get('/api/pages/:pageKey', (req, res) => {
+  const { pageKey } = req.params;
+  const allPages = readPages();
+  if (!allPages[pageKey]) {
+    return res.status(404).json({ error: 'Page not found' });
+  }
+  res.json({ [pageKey]: allPages[pageKey] });
+});
+
+app.put('/api/pages/:pageKey', (req, res) => {
+  const { pageKey } = req.params;
+  const allPages = readPages();
+  allPages[pageKey] = req.body;
+  writePages(allPages);
+  res.json({ [pageKey]: allPages[pageKey] });
+});
 
 // GET /api/:entity  — list all records, optional ?sort=-field
 app.get('/api/:entity', (req, res) => {

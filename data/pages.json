@@ -1,0 +1,245 @@
+{
+  "about": {
+    "id": "about",
+    "title": "Qui suis-je",
+    "intro": "Emmanuel Foka, fils de Figuil, entrepreneur innovant au service du développement local",
+    "values": [
+      {
+        "id": 1,
+        "title": "Intégrité",
+        "description": "Transparence et honnêteté dans chaque action"
+      },
+      {
+        "id": 2,
+        "title": "Proximité",
+        "description": "À l'écoute des besoins de chaque canton"
+      },
+      {
+        "id": 3,
+        "title": "Innovation",
+        "description": "Solutions modernes pour défis locaux"
+      },
+      {
+        "id": 4,
+        "title": "Travail",
+        "description": "Engagement total au service de Figuil"
+      },
+      {
+        "id": 5,
+        "title": "Résultats",
+        "description": "Des projets concrets et mesurables"
+      },
+      {
+        "id": 6,
+        "title": "Excellence",
+        "description": "Standard élevé dans chaque initiative"
+      }
+    ],
+    "achievements": [
+      "Responsable Google Developer Group",
+      "Fondateur de MOKINE (traçabilité animale par IA)",
+      "Lauréat YEIC (Young Entrepreneurs Innovation Challenge)",
+      "Lauréat APPECAM (Association pour la Promotion de l'Entrepreneuriat)",
+      "Lauréat ECAM (École Supérieure des Sciences et Techniques)",
+      "Lauréat AppsAfrica Innovation Awards",
+      "Expert en Intelligence Artificielle appliquée à l'agriculture",
+      "Expert en développement rural et élevage"
+    ]
+  },
+  "projects": {
+    "id": "projects",
+    "title": "Projets Signatures",
+    "subtitle": "10 projets transformateurs pour Figuil",
+    "projects": [
+      {
+        "id": 1,
+        "title": "Figuil Business Zone",
+        "category": "Économie",
+        "objective": "Créer un pôle économique dynamique",
+        "problem": "Manque d'infrastructures pour les entreprises et artisans",
+        "solution": "Zone commerciale moderne avec 100 boutiques, ateliers, et espaces coworking",
+        "impact": "500+ emplois directs, attraction d'investissements"
+      },
+      {
+        "id": 2,
+        "title": "150 Forages - Eau Pour Tous",
+        "category": "Infrastructure",
+        "objective": "Garantir l'accès à l'eau potable dans tous les villages",
+        "problem": "Pénurie d'eau potable, maladies hydriques",
+        "solution": "150 forages équipés de pompes solaires répartis dans les 5 cantons",
+        "impact": "Santé améliorée, temps gagné, élevage facilité"
+      },
+      {
+        "id": 3,
+        "title": "Éclairage Solaire 5 Cantons",
+        "category": "Énergie",
+        "objective": "Illuminer Figuil avec l'énergie propre",
+        "problem": "Obscurité nocturne, insécurité, activités limitées",
+        "solution": "500 lampadaires solaires dans zones stratégiques + places publiques",
+        "impact": "Sécurité renforcée, activités nocturnes, économies d'énergie"
+      },
+      {
+        "id": 4,
+        "title": "MOKINE - Traçabilité Animale IA",
+        "category": "Innovation",
+        "objective": "Moderniser l'élevage par l'intelligence artificielle",
+        "problem": "Vol de bétail, traçabilité difficile, conflits",
+        "solution": "Système IA de reconnaissance et traçabilité du cheptel",
+        "impact": "Sécurité du bétail, conflits réduits, données statistiques"
+      },
+      {
+        "id": 5,
+        "title": "Université Rurale de Figuil",
+        "category": "Éducation",
+        "objective": "Formation supérieure adaptée aux réalités rurales",
+        "problem": "Exode des jeunes, formation inadaptée",
+        "solution": "Centre universitaire : agro-pastoralisme, entrepreneuriat, tech",
+        "impact": "Jeunes formés localement, compétences adaptées"
+      },
+      {
+        "id": 6,
+        "title": "Commune Propre - Pavés Recyclés",
+        "category": "Environnement",
+        "objective": "Assainissement et économie circulaire",
+        "problem": "Déchets plastiques, rues dégradées",
+        "solution": "Usine de pavés à partir de plastique recyclé",
+        "impact": "Environnement sain, emplois verts, routes durables"
+      },
+      {
+        "id": 7,
+        "title": "Coopératives Cantonales",
+        "category": "Social",
+        "objective": "Renforcer l'organisation économique locale",
+        "problem": "Agriculteurs/éleveurs isolés, faible pouvoir de négociation",
+        "solution": "10 coopératives (agriculture, élevage, artisanat, femmes)",
+        "impact": "Revenus améliorés, accès au crédit, formation"
+      },
+      {
+        "id": 8,
+        "title": "Routes Pavées Rurales",
+        "category": "Infrastructure",
+        "objective": "Désenclaver les villages",
+        "problem": "Isolement, difficulté d'accès aux marchés",
+        "solution": "50 km de routes pavées reliant villages aux centres",
+        "impact": "Commerce facilité, accès aux soins, mobilité"
+      },
+      {
+        "id": 9,
+        "title": "Musée & Route Culturelle Bidzar",
+        "category": "Culture",
+        "objective": "Valoriser le patrimoine UNESCO",
+        "problem": "Potentiel touristique inexploité",
+        "solution": "Musée moderne + circuit touristique sites Bidzar",
+        "impact": "Tourisme développé, emplois, fierté culturelle"
+      },
+      {
+        "id": 10,
+        "title": "Corridor Économique Figuil-Léré-Mubi",
+        "category": "Commerce",
+        "objective": "Intégration économique transfrontalière",
+        "problem": "Échanges limités avec Tchad et Nigeria",
+        "solution": "Zone de libre-échange, facilitation douanière, infrastructures",
+        "impact": "Commerce multiplié, emplois, rayonnement régional"
+      }
+    ]
+  },
+  "program": {
+    "id": "program",
+    "title": "Notre Programme",
+    "subtitle": "7 axes pour transformer Figuil",
+    "axes": [
+      {
+        "id": 1,
+        "title": "Gouvernance & Transparence",
+        "problems": ["Manque de transparence dans la gestion communale", "Faible participation citoyenne", "Information limitée sur les projets"],
+        "solutions": ["Conseil communal ouvert et accessible", "Publication trimestrielle des comptes", "Plateforme digitale de suivi des projets", "Assemblées cantonales mensuelles", "Budget participatif (20% des investissements)"],
+        "results": ["Confiance restaurée", "Citoyens informés et impliqués", "Gestion exemplaire"]
+      },
+      {
+        "id": 2,
+        "title": "Emploi, Économie & Routes",
+        "problems": ["Chômage massif des jeunes (65%)", "Infrastructures routières défaillantes", "Accès limité aux marchés"],
+        "solutions": ["Figuil Business Zone : 500+ emplois", "50 km de routes pavées", "Incubateur d'entreprises", "Microcrédits pour jeunes entrepreneurs", "Marchés modernes dans chaque canton"],
+        "results": ["1000+ emplois créés d'ici 2031", "Mobilité améliorée", "Économie locale dynamique"]
+      },
+      {
+        "id": 3,
+        "title": "Jeunesse, Formation & Innovation",
+        "problems": ["Exode rural des jeunes", "Formation inadaptée au marché", "Manque d'opportunités locales"],
+        "solutions": ["Université Rurale de Figuil", "Centre de formation professionnelle", "Pépinière de startups", "Programme de mentorat", "Festival annuel de l'innovation", "Bourses d'excellence"],
+        "results": ["500 jeunes formés/an", "50 startups lancées", "Talents locaux valorisés"]
+      },
+      {
+        "id": 4,
+        "title": "Cohésion Sociale & Inclusion",
+        "problems": ["Tensions intercommunautaires", "Marginalisation des femmes", "Faible organisation sociale"],
+        "solutions": ["Programme d'autonomisation des femmes", "Coopératives féminines dans chaque canton", "Microcrédits sans garantie", "Centre d'écoute et de médiation", "Festivals culturels intercommunautaires", "Quotas femmes dans les instances (40%)"],
+        "results": ["1000 femmes autonomisées", "Conflits réduits de 70%", "Tissu social renforcé"]
+      },
+      {
+        "id": 5,
+        "title": "Santé, Eau & Environnement",
+        "problems": ["Accès limité à l'eau potable", "Infrastructures sanitaires insuffisantes", "Pollution plastique", "Maladies hydriques récurrentes"],
+        "solutions": ["150 forages dans les 5 cantons", "Centre de santé moderne par canton", "Ambulances équipées (3)", "Usine de pavés à partir de plastique recyclé", "Programme d'assainissement", "Campagnes de sensibilisation santé"],
+        "results": ["100% accès à l'eau potable", "Mortalité infantile réduite de 50%", "Environnement assaini"]
+      },
+      {
+        "id": 6,
+        "title": "Culture, Sport & Identité",
+        "problems": ["Patrimoine culturel sous-valorisé", "Infrastructures sportives inexistantes", "Potentiel touristique inexploité"],
+        "solutions": ["Musée moderne de Bidzar (site UNESCO)", "Route culturelle et touristique", "Stades multisports (3)", "Festival culturel annuel", "Écoles de musique et danse traditionnelles", "Promotion des artisans locaux"],
+        "results": ["Tourisme développé", "Jeunes épanouis", "Fierté culturelle restaurée"]
+      },
+      {
+        "id": 7,
+        "title": "Commerce & Ouverture Régionale",
+        "problems": ["Isolement économique", "Faible intégration régionale", "Marchés informels peu rentables"],
+        "solutions": ["Corridor Économique Figuil-Léré-Mubi (CELT)", "Zone de libre-échange transfrontalière", "Facilitation douanière", "Marchés modernes structurés", "Promotion des produits locaux", "Partenariats avec Tchad et Nigeria"],
+        "results": ["Commerce multiplié par 3", "Revenus des commerçants +50%", "Rayonnement régional"]
+      }
+    ]
+  },
+  "cantons": {
+    "id": "cantons",
+    "title": "Les 5 Cantons",
+    "subtitle": "Un projet territorial qui parle à chaque communauté",
+    "cantons": [
+      {
+        "id": "figuil",
+        "name": "Canton de Figuil",
+        "population": "~30,000",
+        "description": "Centre urbain et administratif de la commune",
+        "priorities": ["Urbanisation planifiée", "Business Zone", "Emploi des jeunes", "Services administratifs modernes", "Éclairage public"],
+        "projects": ["Figuil Business Zone : Hub économique avec 100 boutiques", "Éclairage solaire : 200 lampadaires", "Université Rurale : Centre de formation supérieure", "Coworking & Incubateur : Pépinière de startups", "Marchés modernes : 3 marchés restructurés"],
+        "challenges": ["Croissance démographique rapide", "Chômage des jeunes", "Infrastructure vieillissante"]
+      },
+      {
+        "id": "lam",
+        "name": "Canton de Lam",
+        "population": "~18,000",
+        "description": "Zone agricole stratégique",
+        "priorities": ["Agriculture moderne", "Accès à l'eau", "Coopératives agricoles", "Routes rurales", "Formation des agriculteurs"],
+        "projects": ["40 forages équipés : Eau pour tous les villages", "Coopératives agricoles : 3 coopératives structurées", "Routes pavées : 15 km reliant villages", "Centre de formation : Techniques agricoles modernes", "Banque de céréales : Stockage et commercialisation"],
+        "challenges": ["Sécheresse récurrente", "Difficulté d'accès aux marchés", "Techniques agricoles traditionnelles"]
+      },
+      {
+        "id": "biou",
+        "name": "Canton de Biou",
+        "population": "~12,000",
+        "description": "Potentiel piscicole et agro-pastoral",
+        "priorities": ["Pisciculture", "Adductions d'eau", "Transformation agro-pastorale", "Désenclavement", "Électrification"],
+        "projects": ["Fermes piscicoles : 5 fermes modernes", "30 forages équipés : Eau potable accessible", "Unité de transformation : Lait, viande, poisson", "Routes pavées : 10 km vers centres de collecte", "Éclairage solaire : 100 lampadaires"],
+        "challenges": ["Isolement géographique", "Manque d'infrastructures", "Potentiel inexploité"]
+      },
+      {
+        "id": "bidzar",
+        "name": "Cantons Bidzar I & II",
+        "population": "~23,500",
+        "description": "Patrimoine UNESCO et identité culturelle",
+        "priorities": ["Valorisation du site UNESCO", "Tourisme culturel", "Routes pavées", "Artisanat local", "Préservation du patrimoine"],
+        "projects": ["Musée moderne de Bidzar : Centre culturel et touristique", "Route culturelle : Circuit des sites historiques", "Formation guides : 50 guides touristiques locaux", "Villages artisanaux : Promotion de l'artisanat", "40 forages : Eau pour préserver le patrimoine", "Routes pavées : 15 km d'accès aux sites"],
+        "challenges": ["Potentiel touristique inexploité", "Dégradation du patrimoine", "Faible valorisation culturelle"]
+      }
+    ]
+  }
+}

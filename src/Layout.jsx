@@ -20,6 +20,7 @@ import Admin from './Pages/Admin';
 import AdminNews from './Pages/AdminNews';
 import AdminSupporters from './Pages/AdminSupporters';
 import AdminTestimonials from './Pages/AdminTestimonials';
+import AdminPages from './Pages/AdminPages';
 
 export default function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -137,6 +138,7 @@ export default function Layout() {
             <Route path={createPageUrl('AdminNews')} element={<AdminNews />} />
             <Route path={createPageUrl('AdminSupporters')} element={<AdminSupporters />} />
             <Route path={createPageUrl('AdminTestimonials')} element={<AdminTestimonials />} />
+            <Route path={createPageUrl('AdminPages')} element={<AdminPages />} />
             {/* Route par défaut */}
             <Route path="*" element={<Home />} />
           </Routes>

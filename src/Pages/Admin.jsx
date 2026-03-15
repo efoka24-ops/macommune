@@ -79,11 +79,11 @@ export default function Admin() {
       link: 'AdminTestimonials'
     },
     {
-      title: 'Voir les Supporters',
-      description: 'Gérer les inscriptions',
-      icon: Users,
-      color: 'from-purple-600 to-purple-800',
-      link: 'AdminSupporters'
+      title: 'Gérer les Pages',
+      description: 'Éditer le contenu du site',
+      icon: Settings,
+      color: 'from-amber-600 to-amber-800',
+      link: 'AdminPages'
     }
   ];
 
@@ -228,6 +228,25 @@ export default function Admin() {
                   </p>
                   <Button className="w-full bg-purple-600 hover:bg-purple-700">
                     Voir les Supporters
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to={createPageUrl('AdminPages')}>
+              <Card className="border-0 hover:shadow-xl transition-all cursor-pointer">
+                <CardHeader className="bg-amber-50">
+                  <CardTitle className="flex items-center text-amber-900">
+                    <Settings className="w-5 h-5 mr-2" />
+                    Pages du Site
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <p className="text-gray-600 mb-4">
+                    Modifier le contenu des pages principales
+                  </p>
+                  <Button className="w-full bg-amber-600 hover:bg-amber-700">
+                    Gérer les Pages
                   </Button>
                 </CardContent>
               </Card>
