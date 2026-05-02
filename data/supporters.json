@@ -158,5 +158,19 @@
     "village": "ffer",
     "help_type": [],
     "profile": "femme"
+  },
+  {
+    "id": "mooooy1wjcbvr",
+    "created_date": "2026-05-02T18:37:29.060Z",
+    "name": "Emmanuel Foka",
+    "phone": "691227149",
+    "email": "efoka24@gmail.com",
+    "canton": "figuil",
+    "village": "",
+    "help_type": [
+      "Financement",
+      "Animation réseaux sociaux"
+    ],
+    "profile": "jeune"
   }
 ]

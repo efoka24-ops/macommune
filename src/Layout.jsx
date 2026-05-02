@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+﻿import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, Facebook, Youtube, Phone, Mail } from 'lucide-react';
-import Button from './components/Button';
+import { Menu, X, Facebook, Youtube, Twitter, Phone, Mail, MapPin, Home as HomeIcon, Newspaper, Calendar, Heart as HeartIcon, MoreHorizontal, ImageIcon as BadgeIcon } from 'lucide-react';
 
 // Import des pages
+import { Toaster } from 'sonner';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Projects from './Pages/Projects';
@@ -14,6 +14,10 @@ import Youth from './Pages/Youth';
 import News from './Pages/News';
 import Gallery from './Pages/Gallery';
 import Join from './Pages/Join';
+import Contact from './Pages/Contact';
+import BadgePage from './Pages/BadgePage';
+import Agenda from './Pages/Agenda';
+import Donate from './Pages/Donate';
 
 // Import des pages admin
 import Admin from './Pages/Admin';
@@ -21,97 +25,113 @@ import AdminNews from './Pages/AdminNews';
 import AdminSupporters from './Pages/AdminSupporters';
 import AdminTestimonials from './Pages/AdminTestimonials';
 import AdminPages from './Pages/AdminPages';
+import AdminEvents from './Pages/AdminEvents';
+import AdminDonations from './Pages/AdminDonations';
 
 export default function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigation = [
     { name: 'Accueil', page: 'Home', component: <Home /> },
-    { name: 'Qui suis-je', page: 'About', component: <About /> },
-    { name: 'Projets Signatures', page: 'Projects', component: <Projects /> },
+    { name: 'Le Candidat', page: 'About', component: <About /> },
     { name: 'Programme', page: 'Program', component: <Program /> },
-    { name: 'Les 5 Cantons', page: 'Cantons', component: <Cantons /> },
-    { name: 'Jeunes & Femmes', page: 'Youth', component: <Youth /> },
-    { name: 'Actualités', page: 'News', component: <News /> },
-    { name: 'Galerie', page: 'Gallery', component: <Gallery /> },
+    { name: 'Projets', page: 'Projects', component: <Projects /> },
+    { name: 'Cantons', page: 'Cantons', component: <Cantons />, hideFromNav: true },
+    { name: 'Jeunes & Femmes', page: 'Youth', component: <Youth />, hideFromNav: true },
+    { name: 'Actualités', page: 'News', component: <News />, hideFromNav: true },
+    { name: 'Galerie', page: 'Gallery', component: <Gallery />, hideFromNav: true },
+    { name: 'Agenda', page: 'Agenda', component: <Agenda /> },
+    { name: 'Badge', page: 'BadgePage', component: <BadgePage /> },
+    { name: 'Faire un Don', page: 'Donate', component: <Donate /> },
+    { name: 'Contact', page: 'Contact', component: <Contact /> },
+  ];
+
+  const bottomNavItems = [
+    { name: 'Accueil', page: 'Home', icon: HomeIcon },
+    { name: 'Actualités', page: 'News', icon: Newspaper },
+    { name: 'Agenda', page: 'Agenda', icon: Calendar },
+    { name: 'Don', page: 'Donate', icon: HeartIcon },
+    { name: 'Plus', page: null, icon: MoreHorizontal },
   ];
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <div className="min-h-screen bg-white">
         <style>{`
           :root {
-            --primary: #1e3a8a;
-            --primary-dark: #1e40af;
-            --accent: #f59e0b;
-            --accent-dark: #d97706;
+            --primary: #172554;
+            --primary-mid: #1e3a8a;
+            --accent: #16a34a;
+            --accent-dark: #15803d;
           }
+          * { scroll-behavior: smooth; }
         `}</style>
 
         {/* Header */}
-        <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-gray-200 shadow-sm">
+        <header className="sticky top-0 z-50 bg-blue-950 shadow-lg">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-20">
+            <div className="flex justify-between items-center py-4">
               {/* Logo */}
-              <Link to={createPageUrl('Home')} className="flex items-center space-x-3 group">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                  <span className="text-white font-bold text-xl">EF</span>
+              <Link to={createPageUrl('Home')} className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-sm">EF</span>
                 </div>
-                <div className="hidden sm:block">
-                  <div className="text-xl font-bold text-gray-900">Emmanuel Foka</div>
-                  <div className="text-xs text-amber-600 font-medium">Construisons Figuil Ensemble</div>
+                <div>
+                  <div className="text-white font-bold text-base leading-tight">Emmanuel Foka</div>
+                  <div className="text-green-400 text-xs font-medium">Commune de Figuil · 2026</div>
                 </div>
               </Link>
 
               {/* Desktop Navigation */}
-              <div className="hidden lg:flex items-center space-x-1">
-                {navigation.map((item) => (
+              <div className="hidden xl:flex items-center space-x-1">
+                {navigation.filter(item => !item.hideFromNav).map((item) => (
                   <Link
                     key={item.page}
                     to={createPageUrl(item.page)}
-                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-700 hover:bg-blue-50 hover:text-blue-900"
+                    className="px-3 py-2 text-sm font-medium text-blue-100 hover:text-white hover:bg-blue-800 rounded-lg transition-all"
                   >
                     {item.name}
                   </Link>
                 ))}
               </div>
 
-              {/* CTA Buttons */}
-              <div className="hidden lg:flex items-center space-x-3">
-                <Link to={createPageUrl('Join')}>
-                  <Button className="bg-amber-500 hover:bg-amber-600 text-white font-semibold shadow-lg">
-                    Rejoindre
-                  </Button>
+              {/* CTA + mobile toggle */}
+              <div className="flex items-center space-x-3">
+                <Link
+                  to={createPageUrl('Join')}
+                  className="hidden lg:inline-flex items-center px-5 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm rounded-lg transition-all"
+                >
+                  Rejoindre
                 </Link>
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="hidden lg:flex xl:hidden p-2 text-white rounded-lg hover:bg-blue-800 transition-colors"
+                >
+                  {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
               </div>
-
-              {/* Mobile menu button */}
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
             </div>
 
-            {/* Mobile Navigation */}
+            {/* Tablet Navigation (lg–xl only, dropdown in header) */}
             {mobileMenuOpen && (
-              <div className="lg:hidden py-4 border-t border-gray-200">
-                <div className="flex flex-col space-y-2">
-                  {navigation.map((item) => (
+              <div className="hidden lg:block xl:hidden pb-4 border-t border-blue-800 pt-4">
+                <div className="flex flex-col space-y-1">
+                  {navigation.filter(item => !item.hideFromNav).map((item) => (
                     <Link
                       key={item.page}
                       to={createPageUrl(item.page)}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="px-4 py-3 rounded-lg text-sm font-medium transition-all text-gray-700 hover:bg-blue-50"
+                      className="px-4 py-3 text-sm font-medium text-blue-100 hover:text-white hover:bg-blue-800 rounded-lg transition-all"
                     >
                       {item.name}
                     </Link>
                   ))}
-                  <Link to={createPageUrl('Join')} onClick={() => setMobileMenuOpen(false)}>
-                    <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold mt-3">
-                      Rejoindre le Mouvement
-                    </Button>
+                  <Link
+                    to={createPageUrl('Join')}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="mt-2 px-4 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm rounded-lg text-center transition-all"
+                  >
+                    Rejoindre le Mouvement
                   </Link>
                 </div>
               </div>
@@ -120,62 +140,141 @@ export default function Layout() {
         </header>
 
         {/* Main Content */}
-        <main>
+        <main className="pb-20 lg:pb-0">
           <Routes>
             {navigation.map((item) => (
-              <Route
-                key={item.page}
-                path={createPageUrl(item.page)}
-                element={item.component}
-              />
+              <Route key={item.page} path={createPageUrl(item.page)} element={item.component} />
             ))}
-            <Route
-              path={createPageUrl('Join')}
-              element={<Join />}
-            />
-            {/* Routes Admin */}
+            <Route path={createPageUrl('Join')} element={<Join />} />
             <Route path={createPageUrl('Admin')} element={<Admin />} />
             <Route path={createPageUrl('AdminNews')} element={<AdminNews />} />
             <Route path={createPageUrl('AdminSupporters')} element={<AdminSupporters />} />
             <Route path={createPageUrl('AdminTestimonials')} element={<AdminTestimonials />} />
             <Route path={createPageUrl('AdminPages')} element={<AdminPages />} />
-            {/* Route par défaut */}
+            <Route path={createPageUrl('AdminEvents')} element={<AdminEvents />} />
+            <Route path={createPageUrl('AdminDonations')} element={<AdminDonations />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
+        {/* ── Mobile Bottom Navigation ───────────────────────── */}
+        <nav
+          className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-blue-950 border-t border-blue-800"
+          style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        >
+          <div className="flex items-center justify-around px-1 py-1">
+            {bottomNavItems.map((item) => {
+              if (item.page === null) {
+                return (
+                  <button
+                    key="plus"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className={`flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl transition-all min-w-[52px] ${
+                      mobileMenuOpen ? 'text-green-400' : 'text-blue-300'
+                    }`}
+                  >
+                    <MoreHorizontal className="w-5 h-5" />
+                    <span className="text-[10px] font-semibold leading-none">Plus</span>
+                  </button>
+                );
+              }
+              return (
+                <NavLink
+                  key={item.page}
+                  to={createPageUrl(item.page)}
+                  className={({ isActive }) =>
+                    `flex flex-col items-center gap-0.5 px-3 py-2 rounded-xl transition-all min-w-[52px] ${
+                      isActive ? 'text-green-400' : 'text-blue-300 hover:text-white'
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      <item.icon className={`w-5 h-5 ${isActive ? 'text-green-400' : ''}`} />
+                      <span className="text-[10px] font-semibold leading-none">{item.name}</span>
+                    </>
+                  )}
+                </NavLink>
+              );
+            })}
+          </div>
+        </nav>
+
+        {/* ── Mobile Full Menu Overlay (bottom sheet) ─────────── */}
+        {mobileMenuOpen && (
+          <div
+            className="lg:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <div
+              className="absolute bottom-[68px] left-0 right-0 bg-blue-950 rounded-t-3xl border-t border-blue-800 p-5"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="w-10 h-1 bg-blue-700 rounded-full mx-auto mb-5" />
+              <div className="grid grid-cols-2 gap-3">
+                {navigation.filter(item => !item.hideFromNav).map((item) => (
+                  <NavLink
+                    key={item.page}
+                    to={createPageUrl(item.page)}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `flex items-center gap-2 p-4 rounded-xl font-semibold text-sm transition-all ${
+                        isActive ? 'bg-green-600 text-white' : 'bg-blue-800/70 text-blue-100 hover:bg-blue-700'
+                      }`
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
+              </div>
+              <NavLink
+                to={createPageUrl('Join')}
+                onClick={() => setMobileMenuOpen(false)}
+                className="mt-3 flex items-center justify-center p-4 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-all"
+              >
+                Rejoindre le Mouvement
+              </NavLink>
+            </div>
+          </div>
+        )}
+
+        <Toaster richColors position="top-right" />
 
         {/* Footer */}
-        <footer className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white mt-20">
+        <footer className="bg-blue-950 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-              {/* About */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+              {/* IdentitÃ© */}
               <div>
-                <h3 className="text-lg font-bold mb-4 text-amber-400">Emmanuel Foka</h3>
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                  Candidat à la mairie de Figuil 2026. 
-                  De la pierre au progrès : bâtissons Figuil ensemble.
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm">EF</span>
+                  </div>
+                  <span className="text-white font-bold text-base">Emmanuel Foka</span>
+                </div>
+                <p className="text-blue-200 text-sm leading-relaxed mb-5">
+                  Candidat à la mairie de Figuil 2026.<br />
+                  Bâtissons ensemble notre commune de demain.
                 </p>
-                <div className="flex space-x-3">
-                  <a href="#" className="w-10 h-10 bg-white/10 hover:bg-amber-500 rounded-full flex items-center justify-center transition-all">
-                    <Facebook className="w-5 h-5" />
+                <div className="flex space-x-2">
+                  <a href="#" className="w-9 h-9 bg-blue-800 hover:bg-green-600 rounded-lg flex items-center justify-center transition-all">
+                    <Facebook className="w-4 h-4" />
                   </a>
-                  <a href="#" className="w-10 h-10 bg-white/10 hover:bg-amber-500 rounded-full flex items-center justify-center transition-all">
-                    <Youtube className="w-5 h-5" />
+                  <a href="#" className="w-9 h-9 bg-blue-800 hover:bg-green-600 rounded-lg flex items-center justify-center transition-all">
+                    <Youtube className="w-4 h-4" />
+                  </a>
+                  <a href="#" className="w-9 h-9 bg-blue-800 hover:bg-green-600 rounded-lg flex items-center justify-center transition-all">
+                    <Twitter className="w-4 h-4" />
                   </a>
                 </div>
               </div>
 
-              {/* Quick Links */}
+              {/* Navigation */}
               <div>
-                <h3 className="text-lg font-bold mb-4 text-amber-400">Navigation</h3>
-                <ul className="space-y-2 text-sm">
-                  {navigation.slice(1, 5).map((item) => (
+                <h3 className="font-bold text-white mb-4 text-xs uppercase tracking-widest">Navigation</h3>
+                <ul className="space-y-2">
+                  {navigation.slice(0, 4).map(item => (
                     <li key={item.page}>
-                      <Link 
-                        to={createPageUrl(item.page)} 
-                        className="text-gray-300 hover:text-amber-400 transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
+                      <Link to={createPageUrl(item.page)} className="text-blue-200 hover:text-green-400 text-sm transition-colors">
                         {item.name}
                       </Link>
                     </li>
@@ -183,37 +282,51 @@ export default function Layout() {
                 </ul>
               </div>
 
-              {/* Les 5 Cantons */}
+              {/* Liens utiles */}
               <div>
-                <h3 className="text-lg font-bold mb-4 text-amber-400">Nos Cantons</h3>
-                <ul className="space-y-2 text-sm text-gray-300">
-                  <li>Canton de Figuil</li>
-                  <li>Canton de Lam</li>
-                  <li>Canton de Biou</li>
-                  <li>Canton Bidzar I</li>
-                  <li>Canton Bidzar II</li>
+                <h3 className="font-bold text-white mb-4 text-xs uppercase tracking-widest">Liens Utiles</h3>
+                <ul className="space-y-2">
+                  {[
+                    { name: 'Actualités', page: 'News' },
+                    { name: 'Galeries', page: 'Gallery' },
+                    { name: 'Cantons', page: 'Cantons' },
+                    { name: 'Jeunes & Femmes', page: 'Youth' },
+                  ].map(item => (
+                    <li key={item.page}>
+                      <Link to={createPageUrl(item.page)} className="text-blue-200 hover:text-green-400 text-sm transition-colors">
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
               {/* Contact */}
               <div>
-                <h3 className="text-lg font-bold mb-4 text-amber-400">Contact</h3>
-                <div className="space-y-3 text-sm">
-                  <a href="tel:+237" className="flex items-center space-x-2 text-gray-300 hover:text-amber-400 transition-colors">
-                    <Phone className="w-4 h-4" />
-                    <span>+237 XXX XXX XXX</span>
-                  </a>
-                  <a href="mailto:contact@emmanuelfoka.cm" className="flex items-center space-x-2 text-gray-300 hover:text-amber-400 transition-colors">
-                    <Mail className="w-4 h-4" />
-                    <span>contact@emmanuelfoka.cm</span>
-                  </a>
-                </div>
+                <h3 className="font-bold text-white mb-4 text-xs uppercase tracking-widest">Contact</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2 text-sm text-blue-200">
+                    <MapPin className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span>Figuil, Région du Nord, Cameroun</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-blue-200">
+                    <Phone className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>+237 6XX XXX XXX</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm text-blue-200">
+                    <Mail className="w-4 h-4 text-green-400 flex-shrink-0" />
+                    <span>contact@foka-figuil.cm</span>
+                  </li>
+                </ul>
               </div>
             </div>
 
-            <div className="border-t border-white/10 mt-12 pt-8 text-center">
-              <p className="text-gray-400 text-sm">
-                © 2026 Emmanuel Foka - Campagne Municipale Figuil. Tous droits réservés.
+            <div className="border-t border-blue-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-3">
+              <p className="text-blue-300 text-sm">
+                © 2026 Emmanuel Foka — Campagne Municipale Figuil. Tous droits réservés.
+              </p>
+              <p className="text-blue-400 text-xs italic">
+                De la pierre au progrès : Bâtissons Figuil Ensemble
               </p>
             </div>
           </div>

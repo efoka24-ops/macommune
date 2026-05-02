@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
   Newspaper, MessageSquare, Users, 
-  BarChart3, PlusCircle, Settings
+  BarChart3, PlusCircle, Settings, Calendar, Heart
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -84,6 +84,20 @@ export default function Admin() {
       icon: Settings,
       color: 'from-amber-600 to-amber-800',
       link: 'AdminPages'
+    },
+    {
+      title: 'Agenda & Événements',
+      description: 'Gérer les événements de campagne',
+      icon: Calendar,
+      color: 'from-blue-600 to-blue-800',
+      link: 'AdminEvents'
+    },
+    {
+      title: 'Dons & Contributions',
+      description: 'Suivre les donations reçues',
+      icon: Heart,
+      color: 'from-rose-600 to-rose-800',
+      link: 'AdminDonations'
     }
   ];
 

@@ -40,6 +40,9 @@ export const base44 = {
     NewsArticle: createEntityApi('NewsArticle'),
     Supporter: createEntityApi('Supporter'),
     Testimonial: createEntityApi('Testimonial'),
+    Badge: createEntityApi('Badge'),
+    Evenement: createEntityApi('Evenement'),
+    Donation: createEntityApi('Donation'),
   },
   pages: {
     async get(pageKey) {
