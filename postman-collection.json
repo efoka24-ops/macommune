@@ -1,0 +1,367 @@
+{
+  "info": {
+    "name": "Macommune API - Test Collection",
+    "description": "Complete API test collection for Macommune backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health & Auth",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/api/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "health"]
+            }
+          }
+        },
+        {
+          "name": "Admin Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@macommune.cm\",\n  \"password\": \"ChangeMe123!\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Editor Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"editor@macommune.cm\",\n  \"password\": \"Editor123!\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Verify Token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3001/api/auth/verify",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "auth", "verify"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "News Articles",
+      "item": [
+        {
+          "name": "List All Articles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/api/NewsArticle",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "NewsArticle"]
+            }
+          }
+        },
+        {
+          "name": "Create Article (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Article Test API\",\n  \"content\": \"This is a test article created via Postman\",\n  \"excerpt\": \"Test article summary\",\n  \"category\": \"terrain\",\n  \"canton\": \"figuil\",\n  \"published\": true\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/NewsArticle",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "NewsArticle"]
+            }
+          }
+        },
+        {
+          "name": "Create Article (Editor)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{editor_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Article Test Editeur\",\n  \"content\": \"Article créé par l'éditeur\",\n  \"excerpt\": \"Résumé article éditeur\",\n  \"category\": \"reunion\",\n  \"canton\": \"lam\",\n  \"published\": true\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/NewsArticle",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "NewsArticle"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "CMS Pages",
+      "item": [
+        {
+          "name": "Get Page (About)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/api/pages/about",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "pages", "about"]
+            }
+          }
+        },
+        {
+          "name": "Get Page (Home)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/api/pages/home",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "pages", "home"]
+            }
+          }
+        },
+        {
+          "name": "Update Page (Admin Only)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hero\": \"About Emmanuel Foka - Updated\",\n  \"content\": \"Updated content from Postman\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/pages/about",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "pages", "about"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Donations",
+      "item": [
+        {
+          "name": "Initiate Donation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 5000,\n  \"phone_number\": \"237699123456\",\n  \"donor_name\": \"Test Donor\",\n  \"message\": \"Support pour la campagne\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/donations/initiate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "donations", "initiate"]
+            }
+          }
+        },
+        {
+          "name": "Verify Donation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/api/donations/verify",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "donations", "verify"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "Failed Login (Wrong Password)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@macommune.cm\",\n  \"password\": \"WrongPassword123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Validation Error (Missing Fields)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 5000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/donations/initiate",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "donations", "initiate"]
+            }
+          }
+        },
+        {
+          "name": "Unauthorized (Missing Token)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hero\": \"Test\",\n  \"content\": \"Test\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/pages/about",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "pages", "about"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "editor_token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

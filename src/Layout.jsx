@@ -20,6 +20,7 @@ import Agenda from './Pages/Agenda';
 import Donate from './Pages/Donate';
 
 // Import des pages admin
+import AdminLogin from './Pages/AdminLogin';
 import Admin from './Pages/Admin';
 import AdminNews from './Pages/AdminNews';
 import AdminSupporters from './Pages/AdminSupporters';
@@ -27,6 +28,9 @@ import AdminTestimonials from './Pages/AdminTestimonials';
 import AdminPages from './Pages/AdminPages';
 import AdminEvents from './Pages/AdminEvents';
 import AdminDonations from './Pages/AdminDonations';
+
+// Auth utilities
+import { ProtectedRoute } from './utils/auth.jsx';
 
 export default function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -83,7 +87,7 @@ export default function Layout() {
               </Link>
 
               {/* Desktop Navigation */}
-              <div className="hidden xl:flex items-center space-x-1">
+              <div className="hidden lg:flex items-center space-x-1">
                 {navigation.filter(item => !item.hideFromNav).map((item) => (
                   <Link
                     key={item.page}
@@ -99,22 +103,22 @@ export default function Layout() {
               <div className="flex items-center space-x-3">
                 <Link
                   to={createPageUrl('Join')}
-                  className="hidden lg:inline-flex items-center px-5 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm rounded-lg transition-all"
+                  className="hidden md:inline-flex items-center px-5 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm rounded-lg transition-all"
                 >
                   Rejoindre
                 </Link>
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="hidden lg:flex xl:hidden p-2 text-white rounded-lg hover:bg-blue-800 transition-colors"
+                  className="lg:hidden p-2 text-white rounded-lg hover:bg-blue-800 transition-colors"
                 >
                   {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
               </div>
             </div>
 
-            {/* Tablet Navigation (lg–xl only, dropdown in header) */}
+            {/* Mobile Navigation (lg–xl only, dropdown in header) */}
             {mobileMenuOpen && (
-              <div className="hidden lg:block xl:hidden pb-4 border-t border-blue-800 pt-4">
+              <div className="lg:hidden pb-4 border-t border-blue-800 pt-4">
                 <div className="flex flex-col space-y-1">
                   {navigation.filter(item => !item.hideFromNav).map((item) => (
                     <Link
@@ -146,13 +150,18 @@ export default function Layout() {
               <Route key={item.page} path={createPageUrl(item.page)} element={item.component} />
             ))}
             <Route path={createPageUrl('Join')} element={<Join />} />
-            <Route path={createPageUrl('Admin')} element={<Admin />} />
-            <Route path={createPageUrl('AdminNews')} element={<AdminNews />} />
-            <Route path={createPageUrl('AdminSupporters')} element={<AdminSupporters />} />
-            <Route path={createPageUrl('AdminTestimonials')} element={<AdminTestimonials />} />
-            <Route path={createPageUrl('AdminPages')} element={<AdminPages />} />
-            <Route path={createPageUrl('AdminEvents')} element={<AdminEvents />} />
-            <Route path={createPageUrl('AdminDonations')} element={<AdminDonations />} />
+            
+            {/* Admin Login */}
+            <Route path="/login" element={<AdminLogin />} />
+            
+            {/* Protected Admin Routes */}
+            <Route path={createPageUrl('Admin')} element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+            <Route path={createPageUrl('AdminNews')} element={<ProtectedRoute><AdminNews /></ProtectedRoute>} />
+            <Route path={createPageUrl('AdminSupporters')} element={<ProtectedRoute><AdminSupporters /></ProtectedRoute>} />
+            <Route path={createPageUrl('AdminTestimonials')} element={<ProtectedRoute><AdminTestimonials /></ProtectedRoute>} />
+            <Route path={createPageUrl('AdminPages')} element={<ProtectedRoute requiredRole="admin"><AdminPages /></ProtectedRoute>} />
+            <Route path={createPageUrl('AdminEvents')} element={<ProtectedRoute><AdminEvents /></ProtectedRoute>} />
+            <Route path={createPageUrl('AdminDonations')} element={<ProtectedRoute requiredRole="admin"><AdminDonations /></ProtectedRoute>} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>

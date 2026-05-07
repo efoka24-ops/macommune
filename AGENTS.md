@@ -64,7 +64,7 @@ Two UI layers coexist — keep them separate:
 
 - Icons: `lucide-react` only
 - Animation: `framer-motion` — standard pattern is `initial={{ opacity: 0, y: 30 }}` + `whileInView` + `viewport={{ once: true }}`
-- Styling: Tailwind CSS v3; brand colors via CSS variables in `Layout.jsx`: `--primary: #1e3a8a`, `--accent: #f59e0b`
+- Styling: Tailwind CSS v3; brand colors via CSS variables in `Layout.jsx`: `--primary: #172554`, `--primary-mid: #1e3a8a`, `--accent: #16a34a`, `--accent-dark: #15803d`
 - Import alias: `@` → `src/` (e.g. `@/api/base44Client`)
 - Data fetching: `@tanstack/react-query` v5 (`useQuery`, `useMutation`) — `QueryClientProvider` is in `main.jsx`
 

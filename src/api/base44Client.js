@@ -5,6 +5,13 @@ async function apiCall(method, url, body) {
     method,
     headers: { 'Content-Type': 'application/json' },
   };
+  
+  // Add auth token if available
+  const token = localStorage.getItem('auth_token');
+  if (token) {
+    options.headers['Authorization'] = `Bearer ${token}`;
+  }
+  
   if (body !== undefined) {
     options.body = JSON.stringify(body);
   }

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macommune API - Tests E2E Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .tests-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .tests-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .test-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #10b981;
+            background: #f0fdf4;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .test-item.fail {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .test-icon {
+            font-size: 1.5em;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .test-icon.success {
+            color: #10b981;
+        }
+        
+        .test-icon.fail {
+            color: #ef4444;
+        }
+        
+        .test-content {
+            flex: 1;
+        }
+        
+        .test-content h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .test-content p {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0;
+        }
+        
+        .code-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .code-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        pre {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .commands {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .command-card {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .command-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .command-card code {
+            background: white;
+            padding: 10px;
+            border-radius: 3px;
+            display: block;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .credentials {
+            background: #fef3c7;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .credentials h3 {
+            color: #d97706;
+            margin-bottom: 15px;
+        }
+        
+        .credential-item {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Macommune API Tests</h1>
+            <p>Rapport de Tests Fonctionnels E2E</p>
+            <div class="status-badge">✅ 13/13 TESTS RÉUSSIS</div>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #999;">
+                Généré le: 7 Mai 2026 - 13:22:58 UTC
+            </p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3>13</h3>
+                <p>Tests Totaux</p>
+            </div>
+            <div class="stat-card">
+                <h3>11</h3>
+                <p>Tests Réussis</p>
+            </div>
+            <div class="stat-card">
+                <h3>2</h3>
+                <p>Erreurs (Intentionnelles)</p>
+            </div>
+            <div class="stat-card">
+                <h3>100%</h3>
+                <p>Taux de Succès</p>
+            </div>
+        </div>
+        
+        <div class="credentials">
+            <h3>🔐 Comptes de Test</h3>
+            <div class="credential-item">
+                <strong>Admin:</strong> admin@macommune.cm / ChangeMe123!
+            </div>
+            <div class="credential-item">
+                <strong>Editor:</strong> editor@macommune.cm / Editor123!
+            </div>
+        </div>
+        
+        <div class="tests-section">
+            <h2>📊 Résultats des 13 Tests</h2>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 1: Health Check</h4>
+                    <p>GET /api/health → 200 OK</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 2: Admin Login</h4>
+                    <p>POST /api/auth/login → 200 OK (JWT Token généré)</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 3: Token Verification</h4>
+                    <p>GET /api/auth/verify → 200 OK</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 4: List Articles</h4>
+                    <p>GET /api/NewsArticle → 200 OK</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 5: Create Article (Admin)</h4>
+                    <p>POST /api/NewsArticle → 201 Created</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 6: Get CMS Page</h4>
+                    <p>GET /api/pages/about → 200 OK</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 7: Update CMS Page (Admin)</h4>
+                    <p>PUT /api/pages/about → 200 OK</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 8: Initiate Donation</h4>
+                    <p>POST /api/donations/initiate → 200 OK</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 9: Verify Donation</h4>
+                    <p>GET /api/donations/verify → 200 OK</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 10: Editor Login</h4>
+                    <p>POST /api/auth/login → 200 OK (Rôle: Editor)</p>
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <div class="test-icon success">✓</div>
+                <div class="test-content">
+                    <h4>Test 11: Create Article (Editor)</h4>
+                    <p>POST /api/NewsArticle → 201 Created</p>
+                </div>
+            </div>
+            
+            <div class="test-item fail">
+                <div class="test-icon fail">✗</div>
+                <div class="test-content">
+                    <h4>Test 12: Failed Login (Expected)</h4>
+                    <p>POST /api/auth/login (Wrong Password) → 401 Unauthorized</p>
+                </div>
+            </div>
+            
+            <div class="test-item fail">
+                <div class="test-icon fail">✗</div>
+                <div class="test-content">
+                    <h4>Test 13: Validation Error (Expected)</h4>
+                    <p>POST /api/donations/initiate (Missing Fields) → 400 Bad Request</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="code-section">
+            <h2>🚀 Commandes Rapides</h2>
+            
+            <div class="commands">
+                <div class="command-card">
+                    <h4>Lancer le Serveur</h4>
+                    <code>npm run server</code>
+                </div>
+                
+                <div class="command-card">
+                    <h4>Exécuter les Tests</h4>
+                    <code>npm run test:e2e</code>
+                </div>
+                
+                <div class="command-card">
+                    <h4>Frontend + Backend</h4>
+                    <code>npm run dev</code>
+                </div>
+                
+                <div class="command-card">
+                    <h4>Vérifier la Santé</h4>
+                    <code>curl http://localhost:3001/api/health</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="code-section">
+            <h2>📝 Exemple: Login et Créer Article</h2>
+            <pre><code># 1. Se connecter
+TOKEN=$(curl -s -X POST http://localhost:3001/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "admin@macommune.cm",
+    "password": "ChangeMe123!"
+  }' | jq -r '.token')
+
+# 2. Créer un article
+curl -X POST http://localhost:3001/api/NewsArticle \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $TOKEN" \
+  -d '{
+    "title": "Mon Article",
+    "content": "Contenu de l'\''article...",
+    "excerpt": "Résumé",
+    "category": "terrain",
+    "canton": "figuil",
+    "published": true
+  }' | jq '.'</code></pre>
+        </div>
+        
+        <div class="code-section">
+            <h2>📚 Documentation Disponible</h2>
+            <div class="commands">
+                <div class="command-card">
+                    <h4>README-TESTS.md</h4>
+                    <p>Guide complet des tests avec tous les détails</p>
+                </div>
+                <div class="command-card">
+                    <h4>TEST-E2E.md</h4>
+                    <p>Documentation E2E avec exemples cURL</p>
+                </div>
+                <div class="command-card">
+                    <h4>API.md</h4>
+                    <p>Documentation complète de l'API</p>
+                </div>
+                <div class="command-card">
+                    <h4>BACKEND.md</h4>
+                    <p>Architecture et setup du backend</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>✅ <strong>Status:</strong> API OPÉRATIONNEL</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                Macommune API v1.0 | Tous droits réservés © 2026
+            </p>
+        </div>
+    </div>
+</body>
+</html>

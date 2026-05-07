@@ -193,18 +193,9 @@ app.use((req, res) => {
 
 // ─── START SERVER ───────────────────────────────────────────────────────
 
-const server = app.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`✅ API server running at http://localhost:${PORT}`);
   console.log(`📚 Demo credentials:`);
   console.log(`   Admin: admin@macommune.cm / ChangeMe123!`);
   console.log(`   Editor: editor@macommune.cm / Editor123!`);
-});
-
-// Handle graceful shutdown
-process.on('SIGINT', () => {
-  console.log('\n🛑 Shutting down...');
-  server.close(() => {
-    console.log('✅ Server closed');
-    process.exit(0);
-  });
 });
